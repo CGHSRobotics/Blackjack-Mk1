@@ -1,4 +1,5 @@
-How to use:
+
+### Controller Text How to Use
 
 Controller text is set with a row, a starting column, length of total string and a label string + a value. value is converted into string automatically to fill void. This allows you to section off arreas of the controller screen into blocks to ensure there is no overcrowding
 
@@ -19,6 +20,9 @@ ex:
 - - - - - - - - - - - -
 ^ a block of size 10
 ```
+
 line: 0-2
+
 col: 0-18
+
 length: 1-18 *MUST BE GREATER THAN LABEL LEN AND LESS THAN (18 - col)
