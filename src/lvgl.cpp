@@ -1,4 +1,3 @@
-#include "ace.h"
 
 namespace ace::lvgl {
 
