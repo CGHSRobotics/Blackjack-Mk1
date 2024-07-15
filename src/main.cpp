@@ -42,6 +42,7 @@ Motor armMotor(-8);
 
 #include "auton.cpp"
 #include "lvgl.cpp"
+#include "notagame.cpp"
 
 
 /* ========================================================================== */
@@ -103,8 +104,13 @@ void opcontrol()
 
 	blkjack::MotorButton armButton(&armMotor, ControllerDigital::A);
 
+	ControllerButton notagamebutton(ControllerDigital::X);
+
+
 	while (true)
 	{
+		if (notagamebutton.changedToPressed()) not_blackjack(&controllerText);
+
 		/* ---------------------------------- Drive --------------------------------- */
 		// arcade drive with left and right sticks
 		drive->getModel()->arcade(controller.getAnalog(ControllerAnalog::leftY),

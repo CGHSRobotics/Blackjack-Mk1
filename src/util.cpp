@@ -1,4 +1,5 @@
 #include "main.h"
+#pragma once
 
 /* ------------------------------ Our Namespace ----------------------------- */
 namespace blkjack {
@@ -118,8 +119,6 @@ namespace blkjack {
 		public:
 
 		Controller* c;
-
-		int updateTime = 10;
 		std::string text_arr[3];
 
 		int next_line_to_write = 0;
@@ -150,7 +149,7 @@ namespace blkjack {
 			text_arr[line].replace(col, label.length(), label);
 			int len_for_value = length - label.length();
 
-
+			string str = value;
 
 		};
 
