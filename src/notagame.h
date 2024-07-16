@@ -1,5 +1,7 @@
+#pragma once
+
 #include "main.h"
-#include "util.cpp"
+#include "util.h"
 
 /* -------------------------------------------------------------------------- */
 /*                                  Blackjack   NOT                              */
@@ -44,16 +46,6 @@ void not_blackjack(blkjack::ControllerText* controllerText) {
 			dealer_hand.push_back(10);
 			dealer_hand.push_back(8);
 		}
-
-
-		/* ------------------------------ Update Screen ----------------------------- */
-		controllerText->update();
-		pros::delay(25);
-		controllerText->update();
-		pros::delay(25);
-		controllerText->update();
-		pros::delay(25);
-
 
 		/* -------------------------- Wait For Player Input ------------------------- */
 
@@ -132,12 +124,6 @@ void not_blackjack(blkjack::ControllerText* controllerText) {
 		controllerText->setText(1, 0, 19, "You Tie. ", 0);
 	}
 
-	controllerText->update();
-	pros::delay(25);
-	controllerText->update();
-	pros::delay(25);
-	controllerText->update();
-	pros::delay(25);
 
 	while (true)
 	{

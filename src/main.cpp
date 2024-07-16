@@ -1,6 +1,6 @@
 #include "main.h"
 
-#include "util.cpp"
+#include "util.h"
 
 /* ========================================================================== */
 /*                                    Ports                                   */
@@ -19,7 +19,10 @@
 
 // Controller
 Controller controller;
+
+// Controller Task
 blkjack::ControllerText controllerText(&controller);
+pros::Task update_controller_task = pros::Task(blkjack::update_controller_text, (void*)&controllerText);
 
 // Chassis Controller - lets us drive the robot around with open- or closed-loop control
 std::shared_ptr<ChassisController> drive = ChassisControllerBuilder()
@@ -40,9 +43,9 @@ Motor armMotor(-8);
 /*                           Include Auton And LVGL                           */
 /* ========================================================================== */
 
-#include "auton.cpp"
-#include "lvgl.cpp"
-#include "notagame.cpp"
+#include "auton.h"
+#include "lvgl.h"
+#include "notagame.h"
 
 
 /* ========================================================================== */
@@ -119,10 +122,6 @@ void opcontrol()
 		/* ------------------------- Other Motors / Pistons ------------------------- */
 
 		armButton.toggle();
-
-		/* ----------------------------- Draw Controller ---------------------------- */
-
-		controllerText.update();
 
 		/* ---------------------------------- Delay --------------------------------- */
 		// Wait and give up the time we don't need to other tasks.

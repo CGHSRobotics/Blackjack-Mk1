@@ -1,5 +1,6 @@
-#include "main.h"
 #pragma once
+
+#include "main.h"
 
 /* ------------------------------ Our Namespace ----------------------------- */
 namespace blkjack {
@@ -114,6 +115,10 @@ namespace blkjack {
 	};
 
 
+	/**
+	 *@brief Class to control text on controller screen
+	 *
+	 */
 	class ControllerText
 	{
 		public:
@@ -125,22 +130,48 @@ namespace blkjack {
 
 		ControllerText(Controller* c) {
 			c = c;
-
-			for (int i = 0; i < 19; i++)
-			{
-				text_arr[0].append(" ");
-				text_arr[1].append(" ");
-				text_arr[2].append(" ");
-			}
+			clearAll();
 		};
 
-		void update() {
+		/**
+		 *@brief updates screen by drawing next line
+		 *
+		 */
+		void update(void* param) {
 			c->setText(next_line_to_write, 0, text_arr[next_line_to_write]);
 
 			next_line_to_write++;
 			if (next_line_to_write >= 3) next_line_to_write = 0;
 		};
 
+		/**
+		 *@brief Clears the whole screen
+		 *
+		 */
+		void clearAll() {
+			text_arr[0] = "                   ";
+			text_arr[1] = "                   ";
+			text_arr[2] = "                   ";
+		}
+
+		/**
+		 *@brief Clears particular line
+		 *
+		 * @param line line to clear
+		 */
+		void clearLine(int line) {
+			text_arr[line] = "                   ";
+		}
+
+		/**
+		 *@brief Set text for a certain block
+		 *
+		 * @param line line for block
+		 * @param col starting column
+		 * @param length length of total block
+		 * @param label string label
+		 * @param value value in int
+		 */
 		void setText(int line, int col, int length, std::string label, int value) {
 
 			// Conditions
@@ -149,12 +180,20 @@ namespace blkjack {
 			text_arr[line].replace(col, label.length(), label);
 			int len_for_value = length - label.length();
 
-			string str = value;
+			string str = std::to_string(value);
 
+			text_arr[line].replace(col + label.length(), len_for_value, str);
 		};
 
 	};
 
+	void update_controller_text(void* cl) {
+		ControllerText* ct = (ControllerText*)cl;
+		ct->c->setText(ct->next_line_to_write, 0, ct->text_arr[ct->next_line_to_write]);
+
+		ct->next_line_to_write++;
+		if (ct->next_line_to_write >= 3) ct->next_line_to_write = 0;
+	};
 
 }
 
