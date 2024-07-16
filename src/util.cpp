@@ -142,7 +142,7 @@ namespace blkjack {
 		};
 
 		void setText(int line, int col, int length, std::string label, int value) {
-
+/*
 			// Conditions
 
 			// assign text
@@ -150,7 +150,7 @@ namespace blkjack {
 			int len_for_value = length - label.length();
 
 			string str = value;
-
+*/
 		};
 
 	};

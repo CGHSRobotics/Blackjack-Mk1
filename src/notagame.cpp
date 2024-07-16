@@ -1,10 +1,10 @@
-#include "main.h"
-#include "util.cpp"
+//#include "main.h"
+//#include "util.cpp"
 
 /* -------------------------------------------------------------------------- */
 /*                                  Blackjack   NOT                              */
 /* -------------------------------------------------------------------------- */
-void not_blackjack(blkjack::ControllerText* controllerText) {
+/*void not_blackjack(blkjack::ControllerText* controllerText) {
 
 	// Game Variables
 	std::vector<int> player_hand;
@@ -15,13 +15,14 @@ void not_blackjack(blkjack::ControllerText* controllerText) {
 	bool input_canceled = false;
 	ControllerButton confirmButton(ControllerDigital::A);
 	ControllerButton cancelButton(ControllerDigital::B);
+	*/
 
 	// Game Loop
-	while (true) {
+	//while (true) {
 
 		/* ----------------------------- Set Game State ----------------------------- */
 
-		if (player_hand.size() >= 2) {
+	/*	if (player_hand.size() >= 2) {
 
 			if (input_confirmed)
 			{
@@ -44,26 +45,26 @@ void not_blackjack(blkjack::ControllerText* controllerText) {
 			dealer_hand.push_back(10);
 			dealer_hand.push_back(8);
 		}
-
+*/
 
 		/* ------------------------------ Update Screen ----------------------------- */
-		controllerText->update();
+		/*controllerText->update();
 		pros::delay(25);
 		controllerText->update();
 		pros::delay(25);
 		controllerText->update();
-		pros::delay(25);
+		pros::delay(25);*/
 
 
 		/* -------------------------- Wait For Player Input ------------------------- */
 
 		// clear previous inputs
-		input_confirmed = false;
-		input_canceled = false;
+		//input_confirmed = false;
+		//input_canceled = false;
 
 
 		// wait for new input
-		while (true)
+		/*while (true)
 		{
 
 			if (confirmButton.changedToReleased())
@@ -81,11 +82,11 @@ void not_blackjack(blkjack::ControllerText* controllerText) {
 			pros::delay(25);
 		}
 	}
-
+*/
 	/* ---------------------------- Determine Winner ---------------------------- */
 
 	// sum player hand
-	int psum = 0;
+	/*int psum = 0;
 	for (int i = 0; i < player_hand.size(); i++)
 	{
 		psum += player_hand[i];
@@ -117,10 +118,10 @@ void not_blackjack(blkjack::ControllerText* controllerText) {
 			controllerText->setText(1, 0, 19, "You Win!!", 0);
 		}
 	}
-
+*/
 
 	// if player > dealer
-	else if (psum > dsum) {
+/*	else if (psum > dsum) {
 		controllerText->setText(1, 0, 19, "You Win!!", 0);
 	}
 	// if dealer > player
@@ -144,4 +145,4 @@ void not_blackjack(blkjack::ControllerText* controllerText) {
 		pros::delay(100);
 	}
 
-}
+}*/

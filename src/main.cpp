@@ -42,7 +42,7 @@ Motor armMotor(-8);
 
 #include "auton.cpp"
 #include "lvgl.cpp"
-#include "notagame.cpp"
+//#include "notagame.cpp"
 
 
 /* ========================================================================== */
@@ -109,7 +109,7 @@ void opcontrol()
 
 	while (true)
 	{
-		if (notagamebutton.changedToPressed()) not_blackjack(&controllerText);
+		//if (notagamebutton.changedToPressed()) not_blackjack(&controllerText);
 
 		/* ---------------------------------- Drive --------------------------------- */
 		// arcade drive with left and right sticks
