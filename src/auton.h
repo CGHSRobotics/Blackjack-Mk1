@@ -1,7 +1,7 @@
 #pragma once
 
 #include "main.h"
-
+#pragma once
 namespace auton {
 
 	/* ========================================================================== */

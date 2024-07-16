@@ -112,7 +112,7 @@ void opcontrol()
 
 	while (true)
 	{
-		if (notagamebutton.changedToPressed()) not_blackjack(&controllerText);
+		//if (notagamebutton.changedToPressed()) not_blackjack(&controllerText);
 
 		/* ---------------------------------- Drive --------------------------------- */
 		// arcade drive with left and right sticks
