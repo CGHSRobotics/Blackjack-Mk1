@@ -58,9 +58,11 @@ namespace blkjack {
 		public:
 
 		Motor* motor;
+		MotorGroup* motor_group;
 		ControllerButton button = ControllerButton(ControllerDigital::A);
 		float speed = 100;
 		bool enabled = false;
+		bool is_mg = false;
 
 		/**
 		 *@brief Construct a new Button Motor object
@@ -74,6 +76,12 @@ namespace blkjack {
 			button = ControllerButton(b);
 		}
 
+		MotorButton(MotorGroup* mg, ControllerDigital b) {
+			motor_group = mg;
+			button = ControllerButton(b);
+			is_mg = true;
+		}
+
 		/**
 		 *@brief Checks if motor is toggled and spins motor at speed if true. returns whether is currently spinning
 		 *
@@ -84,7 +92,8 @@ namespace blkjack {
 
 			if (button.changedToPressed()) enabled = !enabled;
 
-			motor->moveVelocity(enabled * speed);
+			if (!is_mg) motor->moveVelocity(enabled * speed);
+			else motor_group->moveVelocity(enabled * speed);
 
 			return enabled;
 		}
@@ -99,7 +108,8 @@ namespace blkjack {
 
 			enabled = button.isPressed();
 
-			motor->moveVelocity(enabled * speed);
+			if (!is_mg) motor->moveVelocity(enabled * speed);
+			else motor_group->moveVelocity(enabled * speed);
 
 			return enabled;
 		}
