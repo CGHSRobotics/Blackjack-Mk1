@@ -38,7 +38,7 @@ ADIButton armLimitSwitch('H');
 
 // other motors, pistons, sensors etc
 Motor armMotor(-8);
-MotorGroup intakeMotors({9, 10});
+MotorGroup intakeMotors({-15, 6});
 
 /* ========================================================================== */
 /*                           Include Auton And LVGL                           */
@@ -106,6 +106,7 @@ void opcontrol()
 
 	blkjack::MotorButton armButton(&armMotor, ControllerDigital::A);
 
+	blkjack::MotorButton intakeButton(&intakeMotors, ControllerDigital::L1);
 	// blkjack::MotorButton intakeButton(&intakeMotors, ControllerDigital::B);
 
 	ControllerButton notagamebutton(ControllerDigital::X);
@@ -122,6 +123,7 @@ void opcontrol()
 		/* ------------------------- Other Motors / Pistons ------------------------- */
 
 		armButton.toggle();
+		intakeButton.press();
 
 		// intakeButton.toggle();
 

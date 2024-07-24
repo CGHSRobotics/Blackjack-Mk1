@@ -3,11 +3,13 @@
 #include "main.h"
 
 /* ------------------------------ Our Namespace ----------------------------- */
-namespace blkjack {
+namespace blkjack
+{
 
 	/* ------------------------------- Timer Class ------------------------------ */
-	class timer {
-		public:
+	class timer
+	{
+	public:
 		float maxTime = 0;
 		float currTime = 0;
 
@@ -16,7 +18,8 @@ namespace blkjack {
 		 *
 		 * @param max_time maximum time in timer in milleseconds
 		 */
-		timer(float max_time) {
+		timer(float max_time)
+		{
 			maxTime = max_time;
 			currTime = 0;
 		}
@@ -26,7 +29,8 @@ namespace blkjack {
 		 *
 		 * @param updateTime amount of time to update timer by, default 10 ms
 		 */
-		void update(float updateTime = 10.0) {
+		void update(float updateTime = 10.0)
+		{
 			currTime += updateTime;
 		}
 
@@ -36,7 +40,8 @@ namespace blkjack {
 		 * @return true
 		 * @return false
 		 */
-		bool done() {
+		bool done()
+		{
 			return currTime >= maxTime;
 		}
 
@@ -44,7 +49,8 @@ namespace blkjack {
 		 *@brief Reset timer
 		 *
 		 */
-		void reset() {
+		void reset()
+		{
 			currTime = 0;
 		}
 	};
@@ -55,28 +61,28 @@ namespace blkjack {
 	 */
 	class MotorButton
 	{
-		public:
-
-		Motor* motor;
-		MotorGroup* motor_group;
+	public:
+		Motor *motor;
+		MotorGroup *motor_group;
 		ControllerButton button = ControllerButton(ControllerDigital::A);
-		float speed = 100;
+		float speed = 200;
 		bool enabled = false;
 		bool is_mg = false;
-
+		// 150
 		/**
 		 *@brief Construct a new Button Motor object
 		 *
 		 * @param m pointer to a motor m to control; ex: "&armMotor"
 		 * @param b button to use; ex: "ControllerDigital::A"
 		 */
-		MotorButton(Motor* m, ControllerDigital b)
+		MotorButton(Motor *m, ControllerDigital b)
 		{
 			motor = m;
 			button = ControllerButton(b);
 		}
 
-		MotorButton(MotorGroup* mg, ControllerDigital b) {
+		MotorButton(MotorGroup *mg, ControllerDigital b)
+		{
 			motor_group = mg;
 			button = ControllerButton(b);
 			is_mg = true;
@@ -88,12 +94,16 @@ namespace blkjack {
 		 * @return true
 		 * @return false
 		 */
-		bool toggle() {
+		bool toggle()
+		{
 
-			if (button.changedToPressed()) enabled = !enabled;
+			if (button.changedToPressed())
+				enabled = !enabled;
 
-			if (!is_mg) motor->moveVelocity(enabled * speed);
-			else motor_group->moveVelocity(enabled * speed);
+			if (!is_mg)
+				motor->moveVelocity(enabled * speed);
+			else
+				motor_group->moveVelocity(enabled * speed);
 
 			return enabled;
 		}
@@ -104,12 +114,16 @@ namespace blkjack {
 		 * @return true
 		 * @return false
 		 */
-		bool press() {
+		bool press()
+		{
 
 			enabled = button.isPressed();
 
-			if (!is_mg) motor->moveVelocity(enabled * speed);
-			else motor_group->moveVelocity(enabled * speed);
+			if (!is_mg)
+				motor->moveVelocity(enabled * speed);
+			else
+				motor_group->setGearing(AbstractMotor::gearset::green);
+			motor_group->moveVelocity(enabled * speed);
 
 			return enabled;
 		}
@@ -119,11 +133,11 @@ namespace blkjack {
 		 *
 		 * @param speed float 0-100 in percent of speed
 		 */
-		void setSpeed(float speed) {
+		void setSpeed(float speed)
+		{
 			speed = speed;
 		}
 	};
-
 
 	/**
 	 *@brief Class to control text on controller screen
@@ -131,14 +145,14 @@ namespace blkjack {
 	 */
 	class ControllerText
 	{
-		public:
-
-		Controller* c;
+	public:
+		Controller *c;
 		std::string text_arr[3];
 
 		int next_line_to_write = 0;
 
-		ControllerText(Controller* c) {
+		ControllerText(Controller *c)
+		{
 			c = c;
 			clearAll();
 		};
@@ -147,18 +161,21 @@ namespace blkjack {
 		 *@brief updates screen by drawing next line
 		 *
 		 */
-		void update(void* param) {
+		void update(void *param)
+		{
 			c->setText(next_line_to_write, 0, text_arr[next_line_to_write]);
 
 			next_line_to_write++;
-			if (next_line_to_write >= 3) next_line_to_write = 0;
+			if (next_line_to_write >= 3)
+				next_line_to_write = 0;
 		};
 
 		/**
 		 *@brief Clears the whole screen
 		 *
 		 */
-		void clearAll() {
+		void clearAll()
+		{
 			text_arr[0] = "                   ";
 			text_arr[1] = "                   ";
 			text_arr[2] = "                   ";
@@ -169,7 +186,8 @@ namespace blkjack {
 		 *
 		 * @param line line to clear
 		 */
-		void clearLine(int line) {
+		void clearLine(int line)
+		{
 			text_arr[line] = "                   ";
 		}
 
@@ -182,7 +200,8 @@ namespace blkjack {
 		 * @param label string label
 		 * @param value value in int
 		 */
-		void setText(int line, int col, int length, std::string label, int value) {
+		void setText(int line, int col, int length, std::string label, int value)
+		{
 
 			// Conditions
 
@@ -194,15 +213,16 @@ namespace blkjack {
 
 			text_arr[line].replace(col + label.length(), len_for_value, str);
 		};
-
 	};
 
-	void update_controller_text(void* cl) {
-		ControllerText* ct = (ControllerText*)cl;
+	void update_controller_text(void *cl)
+	{
+		ControllerText *ct = (ControllerText *)cl;
 		ct->c->setText(ct->next_line_to_write, 0, ct->text_arr[ct->next_line_to_write]);
 
 		ct->next_line_to_write++;
-		if (ct->next_line_to_write >= 3) ct->next_line_to_write = 0;
+		if (ct->next_line_to_write >= 3)
+			ct->next_line_to_write = 0;
 	};
 
 }
@@ -218,11 +238,7 @@ namespace blkjack {
  * @param h
  * @return constexpr unsigned int
  */
-constexpr unsigned int str2int(const char* str, int h = 0)
+constexpr unsigned int str2int(const char *str, int h = 0)
 {
 	return !str[h] ? 5381 : (str2int(str, h + 1) * 33) ^ str[h];
 }
-
-
-
-
