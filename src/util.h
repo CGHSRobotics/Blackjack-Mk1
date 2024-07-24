@@ -61,14 +61,26 @@ namespace blkjack
 	 */
 	class MotorButton
 	{
-	public:
+		private:
+		float speed = 100;
+		bool enabled = false;
+		bool is_mg = false;
+		int gearint = 1;
+		// Defaults to green
+		AbstractMotor::gearset gear = AbstractMotor::gearset::green;
+		AbstractMotor::encoderUnits encodingUnits = AbstractMotor::encoderUnits::degrees;
+
+		void find_gearint() {
+			if (gear == AbstractMotor::gearset::red) gearint = 1;
+			if (gear == AbstractMotor::gearset::green) gearint = 2;
+			if (gear == AbstractMotor::gearset::blue) gearint = 6;
+		}
+		
+		public:
 		Motor *motor;
 		MotorGroup *motor_group;
 		ControllerButton button = ControllerButton(ControllerDigital::A);
-		float speed = 200;
-		bool enabled = false;
-		bool is_mg = false;
-		// 150
+		
 		/**
 		 *@brief Construct a new Button Motor object
 		 *
@@ -79,13 +91,15 @@ namespace blkjack
 		{
 			motor = m;
 			button = ControllerButton(b);
+			gear = motor->getGearing();
 		}
-
-		MotorButton(MotorGroup *mg, ControllerDigital b)
+		// Same as above but for motor groups
+		MotorButton(MotorGroup *mg, ControllerDigital b, AbstractMotor::gearset gearing = AbstractMotor::gearset::green)
 		{
 			motor_group = mg;
 			button = ControllerButton(b);
 			is_mg = true;
+			gear = gearing;
 		}
 
 		/**
@@ -101,9 +115,9 @@ namespace blkjack
 				enabled = !enabled;
 
 			if (!is_mg)
-				motor->moveVelocity(enabled * speed);
+				motor->moveVelocity(enabled * speed * gearint);
 			else
-				motor_group->moveVelocity(enabled * speed);
+				motor_group->moveVelocity(enabled * speed * gearint);
 
 			return enabled;
 		}
@@ -116,14 +130,12 @@ namespace blkjack
 		 */
 		bool press()
 		{
-
 			enabled = button.isPressed();
 
 			if (!is_mg)
 				motor->moveVelocity(enabled * speed);
 			else
-				motor_group->setGearing(AbstractMotor::gearset::green);
-			motor_group->moveVelocity(enabled * speed);
+				motor_group->moveVelocity(enabled * speed);
 
 			return enabled;
 		}

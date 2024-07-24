@@ -37,8 +37,8 @@ std::shared_ptr<ChassisController> drive = ChassisControllerBuilder()
 ADIButton armLimitSwitch('H');
 
 // other motors, pistons, sensors etc
-Motor armMotor(-8);
-MotorGroup intakeMotors({-15, 6});
+Motor armMotor(-8, false, AbstractMotor::gearset::green, AbstractMotor::encoderUnits::degrees);
+MotorGroup intakeMotors({ -15, 6 });
 
 /* ========================================================================== */
 /*                           Include Auton And LVGL                           */
