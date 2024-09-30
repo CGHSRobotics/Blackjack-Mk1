@@ -11,6 +11,7 @@
 #define CHASSIS_R_1 20
 #define CHASSIS_R_2 19
 #define CHASSIS_R_3 12
+#define OPTICAL_PORT 5
 
 /* ========================================================================== */
 /*                                   Devices                                  */
@@ -18,7 +19,8 @@
 
 // Controller
 Controller controller;
-
+// This may need to go into init!
+pros::Optical optical_sensor(OPTICAL_PORT);
 // Controller Task
 /*
 blkjack::ControllerText controllerText(&controller);
@@ -29,7 +31,7 @@ pros::Task update_controller_task = pros::Task(blkjack::update_controller_text, 
 std::shared_ptr<ChassisController> drive = ChassisControllerBuilder()
 											   .withMotors(MotorGroup({CHASSIS_L_1, CHASSIS_L_2, CHASSIS_L_3}), MotorGroup({CHASSIS_R_1, CHASSIS_R_2, CHASSIS_R_3}))
 											   // Green gearset, 4 in wheel diam, 11.5 in wheel track
-											   .withDimensions(AbstractMotor::gearset::blue, {{4_in, 11.5_in}, imev5GreenTPR})
+											   .withDimensions(AbstractMotor::gearset::blue, {{2.75_in, 9_in}, imev5BlueTPR})
 											   .withOdometry()
 											   .build();
 
@@ -38,7 +40,7 @@ ADIButton armLimitSwitch('H');
 
 // other motors, pistons, sensors etc
 Motor armMotor(-8, false, AbstractMotor::gearset::green, AbstractMotor::encoderUnits::degrees);
-MotorGroup intakeMotors({ -15, 6 });
+MotorGroup intakeMotors({-15, 6});
 
 /* ========================================================================== */
 /*                           Include Auton And LVGL                           */
@@ -103,6 +105,8 @@ void autonomous()
 /* ========================================================================== */
 void opcontrol()
 {
+	pros::Optical optical_sensor(OPTICAL_PORT);
+	
 
 	blkjack::MotorButton armButton(&armMotor, ControllerDigital::A);
 
@@ -123,6 +127,7 @@ void opcontrol()
 		/* ------------------------- Other Motors / Pistons ------------------------- */
 
 		armButton.toggle();
+
 		intakeButton.press();
 
 		// intakeButton.toggle();

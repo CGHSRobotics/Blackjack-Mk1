@@ -36,6 +36,9 @@
 
 #include "api.h"
 
+//lvgl include 
+#include "pros/apix.h"
+
    /**
 	* You should add more #includes here
 	*/
