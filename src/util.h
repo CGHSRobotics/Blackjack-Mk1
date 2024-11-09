@@ -237,7 +237,19 @@ namespace blkjack
 			ct->next_line_to_write = 0;
 	};
 
-}
+	const pros::ADIDigitalOut hookPneumatics(PORT_PNEU_HOOK, false);
+
+	void hook_toggle(bool enabled)
+	{
+		if (enabled) {
+    hookPneumatics.set_value(1);
+    return;
+
+  } else {
+    hookPneumatics.set_value(0);
+
+		}
+	}
 
 /* ========================================================================== */
 /*                            Random Util Function                            */
