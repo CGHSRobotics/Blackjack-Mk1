@@ -29,18 +29,18 @@ pros::Task update_controller_task = pros::Task(blkjack::update_controller_text, 
 
 // Chassis Controller - lets us drive the robot around with open- or closed-loop control
 std::shared_ptr<ChassisController> drive = ChassisControllerBuilder()
-											   .withMotors(MotorGroup({CHASSIS_L_1, CHASSIS_L_2, CHASSIS_L_3}), MotorGroup({CHASSIS_R_1, CHASSIS_R_2, CHASSIS_R_3}))
-											   // Green gearset, 4 in wheel diam, 11.5 in wheel track
-											   .withDimensions(AbstractMotor::gearset::blue, {{2.75_in, 9_in}, imev5BlueTPR})
-											   .withOdometry()
-											   .build();
+.withMotors(MotorGroup({ CHASSIS_L_1, CHASSIS_L_2, CHASSIS_L_3 }), MotorGroup({ CHASSIS_R_1, CHASSIS_R_2, CHASSIS_R_3 }))
+// Green gearset, 4 in wheel diam, 11.5 in wheel track
+.withDimensions(AbstractMotor::gearset::blue, { {2.75_in, 9_in}, imev5BlueTPR })
+.withOdometry()
+.build();
 
 // Arm related objects
 ADIButton armLimitSwitch('H');
 
 // other motors, pistons, sensors etc
 Motor armMotor(-8, false, AbstractMotor::gearset::green, AbstractMotor::encoderUnits::degrees);
-MotorGroup intakeMotors({-15, 6});
+MotorGroup intakeMotors({ -15, 6 });
 
 /* ========================================================================== */
 /*                           Include Auton And LVGL                           */
@@ -82,23 +82,25 @@ void autonomous()
 	// Switch case
 	switch (str2int(auton::autons_arr[auton::cur_auton]))
 	{
-	case str2int("red side"):
-		auton::red_side();
-		break;
+		case str2int("red side"):
+			auton::red_side();
+			break;
 
-	case str2int("blue side"):
+		case str2int("blue side"):
 
-		break;
+			break;
 
-	case str2int("skills"):
+		case str2int("skills"):
 
-		break;
+			break;
 
-	default:
+		default:
 
-		break;
+			break;
 	}
 }
+
+//hi
 
 /* ========================================================================== */
 /*                                User Control                                */
@@ -106,7 +108,7 @@ void autonomous()
 void opcontrol()
 {
 	pros::Optical optical_sensor(OPTICAL_PORT);
-	
+
 
 	blkjack::MotorButton armButton(&armMotor, ControllerDigital::A);
 
