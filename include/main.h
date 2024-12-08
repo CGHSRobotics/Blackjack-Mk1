@@ -15,48 +15,43 @@
 #ifndef _PROS_MAIN_H_
 #define _PROS_MAIN_H_
 
- /**
-  * If defined, some commonly used enums will have preprocessor macros which give
-  * a shorter, more convenient naming pattern. If this isn't desired, simply
-  * comment the following line out.
-  *
-  * For instance, E_CONTROLLER_MASTER has a shorter name: CONTROLLER_MASTER.
-  * E_CONTROLLER_MASTER is pedantically correct within the PROS styleguide, but
-  * not convenient for most student programmers.
-  */
+/**
+ * If defined, some commonly used enums will have preprocessor macros which give
+ * a shorter, more convenient naming pattern. If this isn't desired, simply
+ * comment the following line out.
+ *
+ * For instance, E_CONTROLLER_MASTER has a shorter name: CONTROLLER_MASTER.
+ * E_CONTROLLER_MASTER is pedantically correct within the PROS styleguide, but
+ * not convenient for most student programmers.
+ */
 #define PROS_USE_SIMPLE_NAMES
 
-  /**
-   * If defined, C++ literals will be available for use. All literals are in the
-   * pros::literals namespace.
-   *
-   * For instance, you can do `4_mtr = 50` to set motor 4's target velocity to 50
-   */
+/**
+ * If defined, C++ literals will be available for use. All literals are in the
+ * pros::literals namespace.
+ *
+ * For instance, you can do `4_mtr = 50` to set motor 4's target velocity to 50
+ */
 #define PROS_USE_LITERALS
 
 #include "api.h"
 
-//lvgl include 
-#include "pros/apix.h"
+/**
+ * You should add more #includes here
+ */
+//#include "okapi/api.hpp"
 
-   /**
-	* You should add more #includes here
-	*/
-#include "okapi/api.hpp"
-
-	/**
-	 * If you find doing pros::Motor() to be tedious and you'd prefer just to do
-	 * Motor, you can use the namespace with the following commented out line.
-	 *
-	 * IMPORTANT: Only the okapi or pros namespace may be used, not both
-	 * concurrently! The okapi namespace will export all symbols inside the pros
-	 * namespace.
-	 */
-	 // using namespace pros;
-	 // using namespace pros::literals;
-using namespace okapi;
-using namespace okapi::literals;
-using std::string;
+/**
+ * If you find doing pros::Motor() to be tedious and you'd prefer just to do
+ * Motor, you can use the namespace with the following commented out line.
+ *
+ * IMPORTANT: Only the okapi or pros namespace may be used, not both
+ * concurrently! The okapi namespace will export all symbols inside the pros
+ * namespace.
+ */
+// using namespace pros;
+// using namespace pros::literals;
+// using namespace okapi;
 
 /**
  * Prototypes for the competition control tasks are redefined here to ensure
@@ -64,14 +59,13 @@ using std::string;
  * button press in opcontrol() for testing purposes).
  */
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
-	void autonomous(void);
-	void initialize(void);
-	void disabled(void);
-	void competition_initialize(void);
-	void opcontrol(void);
+void autonomous(void);
+void initialize(void);
+void disabled(void);
+void competition_initialize(void);
+void opcontrol(void);
 #ifdef __cplusplus
 }
 #endif
@@ -80,7 +74,7 @@ extern "C"
 /**
  * You can add C++-only headers here
  */
- // #include <iostream>
+//#include <iostream>
 #endif
 
-#endif _PROS_MAIN_H_
+#endif  // _PROS_MAIN_H_
