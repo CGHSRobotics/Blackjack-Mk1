@@ -8,6 +8,8 @@
 
 ControllerDisplay controller_display;
 
+AutonomousSelector auto_selector;
+
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -16,21 +18,13 @@ ControllerDisplay controller_display;
  */
 void initialize() {
 
-	//start controller display
-	controller_display.setLine(0, "Hello %s!", "Nick");
-
-	// display variables like so
-	int num = 5;
-	controller_display.setLine(1, "num: %d", num);
-
-	// or make variables always 3 min wide like this
-	controller_display.setLine(2, "num: %03d", num);
-
-	// Cheat Sheet available here:
-	// https://alvinalexander.com/programming/printf-format-cheat-sheet/
-
-
+	// Start Controller Display Task
 	controller_display.start_update_task();
+
+	auto_selector.add_auto(three_side);
+	//auto_selector.add_auto(two_side);
+	//auto_selector.add_auto(awp);
+	//auto_selector.add_auto(skills);
 
 	// Lvgl test, lemme know if no worky
 	lv_example_get_started_3();
@@ -42,7 +36,9 @@ void initialize() {
  * the VEX Competition Switch, following either autonomous or opcontrol. When
  * the robot is enabled, this task will exit.
  */
-void disabled() {}
+void disabled() {
+	// nothing here
+}
 
 /**
  * Runs after initialize(), and before autonomous when connected to the Field
@@ -53,7 +49,9 @@ void disabled() {}
  * This task will exit when the robot is enabled and autonomous or opcontrol
  * starts.
  */
-void competition_initialize() {}
+void competition_initialize() {
+	// Nothing here
+}
 
 /**
  * Runs the user autonomous code. This function will be started in its own task
@@ -67,9 +65,8 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-
-
-
+	auto_selector.set_selected("Three Side");
+	auto_selector.run_selected();
 }
 
 /**
@@ -90,10 +87,32 @@ void opcontrol() {
 
 	while (true) {
 
+		/* ========================================================================== */
+		/*                                    Drive                                   */
+		/* ========================================================================== */
 		chassis->getModel()->tank(controller.getAnalog(okapi::ControllerAnalog::leftY),
 							controller.getAnalog(okapi::ControllerAnalog::rightY));
 
 
-		pros::delay(10);                               // Run for 20 ms then update
+		/* ========================================================================== */
+		/*                                   Screen                                   */
+		/* ========================================================================== */
+
+		//start controller display
+		controller_display.setLine(0, "Hello %s!", "Nick");
+
+		// display variables like so
+		int num = 5;
+		controller_display.setLine(1, "num: %d", num);
+
+		// or make variables always 3 min wide like this
+		controller_display.setLine(2, "num: %03d", num);
+
+		// Cheat Sheet available here:
+		// https://alvinalexander.com/programming/printf-format-cheat-sheet/
+
+
+		/* ---------------------------------- Delay --------------------------------- */
+		pros::delay(10);                               // Run for 10 ms then update
 	}
 }

@@ -11,12 +11,18 @@ extern okapi::Controller controller;
 #define CHASSIS_R_2 5
 #define CHASSIS_R_3 6
 
+#define LIFT_MOTOR_PORT 7
+
+
 
 /* ========================================================================== */
 /*                             Chassis Controller                             */
 /* ========================================================================== */
 extern std::shared_ptr < okapi::ChassisController> chassis;
 
+extern std::shared_ptr<okapi::AsyncMotionProfileController> auton_chassis_contr;
+
 /* ========================================================================== */
 /*                                    Motor                                   */
 /* ========================================================================== */
+extern std::shared_ptr<okapi::AsyncPositionController<double, double>> lift_contr;

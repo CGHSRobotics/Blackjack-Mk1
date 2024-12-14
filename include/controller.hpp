@@ -13,6 +13,8 @@ class ControllerDisplay
 	char* screen_buff[3];
 	int cur_line = 0;
 
+	void update();
+
 	public:
 
 	ControllerDisplay();
@@ -21,7 +23,11 @@ class ControllerDisplay
 
 	void start_update_task();
 
-	void update();
 
+	~ControllerDisplay() {
+		free(screen_buff[0]);
+		free(screen_buff[1]);
+		free(screen_buff[2]);
+	}
 };
 

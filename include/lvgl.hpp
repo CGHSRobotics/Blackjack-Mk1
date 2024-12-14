@@ -1,5 +1,5 @@
 #pragma once
 
-#include "lvgl.h"
+#include "liblvgl/lvgl.h"
 
 void lv_example_get_started_3(void);

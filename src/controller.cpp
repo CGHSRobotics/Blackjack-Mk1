@@ -2,7 +2,10 @@
 #include "controller.hpp"
 
 
-
+/**
+ *@brief Construct a new Controller Display:: Controller Display object
+ *
+ */
 ControllerDisplay::ControllerDisplay() {
 
 	// Alloted for 64 chars incase over flow, vex limits to 15 on screen tho
@@ -13,6 +16,13 @@ ControllerDisplay::ControllerDisplay() {
 }
 
 
+/**
+ *@brief Set text for line, uses printf format specifiers
+ *
+ * @param line_num line num [0-2]
+ * @param fmt	"Hello %d" MAKE SURE THIS IS <= 15 CHARACTERS
+ * @param ...	 5
+ */
 void ControllerDisplay::setLine(int line_num, char* fmt, ...)
 {
 	fflush(stdout);
@@ -22,10 +32,15 @@ void ControllerDisplay::setLine(int line_num, char* fmt, ...)
 	char buff[64];
 	sprintf(buff, fmt, args);
 
-	strcpy(screen_buff[line_num - 1], buff);
+	strcpy(screen_buff[line_num], buff);
 }
 
 
+/**
+ *@brief start update task
+ *	ONLY RUN ONCE AND IN init() !!!!!!
+ *
+ */
 void ControllerDisplay::start_update_task() {
 	pros::Task my_task([this] {
 		this->update();
@@ -34,6 +49,10 @@ void ControllerDisplay::start_update_task() {
 }
 
 
+/**
+ *@brief update func to display text, do not call directly
+ *
+ */
 void ControllerDisplay::update() {
 
 	controller.setText(cur_line, 0, screen_buff[cur_line]);
