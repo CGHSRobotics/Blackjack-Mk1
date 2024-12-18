@@ -69,6 +69,10 @@ void autonomous() {
 	auto_selector.run_selected();
 }
 
+
+void test() {
+
+}
 /**
  * Runs the operator control code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -86,6 +90,16 @@ void opcontrol() {
 
 
 	while (true) {
+
+
+		/* ========================================================================== */
+		/*                                  Controls                                  */
+		/* ========================================================================== */
+
+
+
+
+
 
 		/* ========================================================================== */
 		/*                                    Drive                                   */
