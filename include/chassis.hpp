@@ -1,6 +1,7 @@
 #pragma once
 
 #include "main.h"
+#include "util.hpp"
 
 extern okapi::Controller controller;
 
@@ -26,3 +27,6 @@ extern std::shared_ptr<okapi::AsyncMotionProfileController> auton_chassis_contr;
 /*                                    Motor                                   */
 /* ========================================================================== */
 extern std::shared_ptr<okapi::AsyncPositionController<double, double>> lift_contr;
+
+
+extern okapi::Motor test_motor;

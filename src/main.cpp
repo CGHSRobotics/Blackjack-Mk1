@@ -88,6 +88,9 @@ void test() {
  */
 void opcontrol() {
 
+	// test button motor with button A and test_motor
+	// should also work with motor groups (think intake)
+	ButtonMotor test(A, &test_motor);
 
 	while (true) {
 
@@ -96,7 +99,9 @@ void opcontrol() {
 		/*                                  Controls                                  */
 		/* ========================================================================== */
 
-
+		// use test motor like a toggle on button a
+		// 60% speed, reversed
+		test.toggle(60, true);
 
 
 

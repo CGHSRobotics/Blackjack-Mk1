@@ -3,8 +3,6 @@
 #include "chassis.hpp"
 
 
-using enum okapi::ControllerDigital;
-
 
 /* ========================================================================== */
 /*                          Controller Display Class                          */

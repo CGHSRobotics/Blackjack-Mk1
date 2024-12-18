@@ -1,9 +1,6 @@
 
 #include "chassis.hpp"
 
-/* ------------------------------- Controller ------------------------------- */
-okapi::Controller controller;
-
 
 /* --------------------------------- Chassis -------------------------------- */
 std::shared_ptr <okapi::ChassisController> chassis =
@@ -39,3 +36,4 @@ okapi::AsyncPosControllerBuilder()
 .build();
 
 
+okapi::Motor test_motor(6, false, AbstractMotor::gearset::blue, okapi::AbstractMotor::encoderUnits::degrees);
