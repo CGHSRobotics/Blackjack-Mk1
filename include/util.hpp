@@ -22,16 +22,16 @@ class ButtonMotor
 	public:
 
 	/* ------------------------------ Contstructor ------------------------------ */
-	ButtonMotor(okapi::ControllerDigital b, okapi::Motor* m) {
+	ButtonMotor(okapi::ControllerDigital b, okapi::Motor* mi) {
 		button = b;
-		m = m;
+		m = mi;
 		mg = NULL;
 		type = motor_type;
 	};
-	ButtonMotor(okapi::ControllerDigital b, okapi::MotorGroup* mg) {
+	ButtonMotor(okapi::ControllerDigital b, okapi::MotorGroup* mgi) {
 		button = b;
 		m = NULL;
-		mg = mg;
+		mg = mgi;
 		type = mgroup_type;
 	}
 
