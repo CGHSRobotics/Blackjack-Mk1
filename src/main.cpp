@@ -2,15 +2,14 @@
 
 #include "chassis.hpp"
 #include "controller.hpp"
-#include "autonomous.hpp"
 #include "lvgl.hpp"
+#include "autonomous.hpp"
 
 
 okapi::Controller controller;
 
 ControllerDisplay controller_display;
 
-AutonomousSelector auto_selector;
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -23,13 +22,8 @@ void initialize() {
 	// Start Controller Display Task
 	controller_display.start_update_task();
 
-	auto_selector.add_auto(three_side);
-	//auto_selector.add_auto(two_side);
-	//auto_selector.add_auto(awp);
-	//auto_selector.add_auto(skills);
-
 	// Lvgl test, lemme know if no worky
-	lv_example_get_started_3();
+	//lv_example_get_started_3();
 
 }
 
@@ -67,7 +61,7 @@ void competition_initialize() {
  * from where it left off.
  */
 void autonomous() {
-	auto_selector.set_selected("Three Side");
+	auto_selector.set_selected("gen test");
 	auto_selector.run_selected();
 }
 
@@ -89,6 +83,10 @@ void test() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+
+	autonomous();
+	return;
+
 
 	// test button motor with button A and test_motor
 	// should also work with motor groups (think intake)

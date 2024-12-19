@@ -6,6 +6,7 @@
 /* ========================================================================== */
 /*                                   Classes                                  */
 /* ========================================================================== */
+
 class AutoRoutine
 {
 	private:
@@ -14,11 +15,10 @@ class AutoRoutine
 
 	public:
 
-	AutoRoutine(std::string str, void (*f)()) {
-		name = str;
-		func = f;
-	}
+	AutoRoutine(std::string str, void (*f)());
+
 	std::string get_name() { return name; }
+
 	void run() { func(); }
 
 	~AutoRoutine() {}
@@ -56,6 +56,9 @@ class AutonomousSelector
 	}
 
 };
+
+extern AutonomousSelector auto_selector;
+
 
 
 /* ========================================================================== */

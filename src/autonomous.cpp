@@ -1,10 +1,14 @@
 
 #include "autonomous.hpp"
 #include "chassis.hpp"
+#include "lvgl.hpp"
 
 /* ========================================================================== */
 /*                             Autonomous Routines                            */
 /* ========================================================================== */
+
+AutonomousSelector auto_selector;
+
 
 /**
  *@brief Three side auto does whattt???
@@ -42,8 +46,91 @@ AutoRoutine three_side("Three Side", [] {
 	// Execute "A" Path
 	auton_chassis_contr->setTarget("A");
 	auton_chassis_contr->waitUntilSettled();
+
 });
 
+
+AutoRoutine gen_test("gen test", [] {
+
+	lv_gen_test();
+	pros::Task::delay(100);
+
+	// Generate S curve path using math that hits these waypoints, call it A
+	auton_chassis_contr->generatePath({
+		{0_in, 0_in, 0_deg}, // starting pos
+		{24_in, 12_in, 90_deg},
+		{36_in, 24_in, 0_deg}
+	}, "A");
+	// Generate S curve path using math that hits these waypoints, call it A
+	auton_chassis_contr->generatePath({
+		{0_in, 0_in, 0_deg}, // starting pos
+		{24_in, 12_in, 90_deg},
+		{36_in, 24_in, 0_deg}
+	}, "B");
+	// Generate S curve path using math that hits these waypoints, call it A
+	auton_chassis_contr->generatePath({
+		{0_in, 0_in, 0_deg}, // starting pos
+		{24_in, 12_in, 90_deg},
+		{36_in, 24_in, 0_deg}
+	}, "C");
+	// Generate S curve path using math that hits these waypoints, call it A
+	auton_chassis_contr->generatePath({
+		{0_in, 0_in, 0_deg}, // starting pos
+		{24_in, 12_in, 90_deg},
+		{36_in, 24_in, 0_deg}
+	}, "D");
+	// Generate S curve path using math that hits these waypoints, call it A
+	auton_chassis_contr->generatePath({
+		{0_in, 0_in, 0_deg}, // starting pos
+		{24_in, 12_in, 90_deg},
+		{36_in, 24_in, 0_deg}
+	}, "E");
+	// Generate S curve path using math that hits these waypoints, call it A
+	auton_chassis_contr->generatePath({
+		{0_in, 0_in, 0_deg}, // starting pos
+		{24_in, 12_in, 90_deg},
+		{36_in, 24_in, 0_deg}
+	}, "F");
+	// Generate S curve path using math that hits these waypoints, call it A
+	auton_chassis_contr->generatePath({
+		{0_in, 0_in, 0_deg}, // starting pos
+		{24_in, 12_in, 90_deg},
+		{36_in, 24_in, 0_deg}
+	}, "G");
+	// Generate S curve path using math that hits these waypoints, call it A
+	auton_chassis_contr->generatePath({
+		{0_in, 0_in, 0_deg}, // starting pos
+		{24_in, 12_in, 90_deg},
+		{36_in, 24_in, 0_deg}
+	}, "H");
+	// Generate S curve path using math that hits these waypoints, call it A
+	auton_chassis_contr->generatePath({
+		{0_in, 0_in, 0_deg}, // starting pos
+		{24_in, 12_in, 90_deg},
+		{36_in, 24_in, 0_deg}
+	}, "I");
+	// Generate S curve path using math that hits these waypoints, call it A
+	auton_chassis_contr->generatePath({
+		{0_in, 0_in, 0_deg}, // starting pos
+		{24_in, 12_in, 90_deg},
+		{36_in, 24_in, 0_deg}
+	}, "J");
+	// Generate S curve path using math that hits these waypoints, call it A
+	auton_chassis_contr->generatePath({
+		{0_in, 0_in, 0_deg}, // starting pos
+		{24_in, 12_in, 90_deg},
+		{36_in, 24_in, 0_deg}
+	}, "K");
+	// Generate S curve path using math that hits these waypoints, call it A
+	auton_chassis_contr->generatePath({
+		{0_in, 0_in, 0_deg}, // starting pos
+		{24_in, 12_in, 90_deg},
+		{36_in, 24_in, 0_deg}
+	}, "L");
+	lv_gen_test2();
+
+
+});
 
 /* ========================================================================== */
 /*                              Class Definitions                             */
@@ -134,4 +221,11 @@ int AutonomousSelector::decrease_selected() {
  */
 int AutonomousSelector::get_num_autons() {
 	return auto_arr.size();
+}
+
+AutoRoutine::AutoRoutine(std::string str, void (*f)()) {
+	name = str;
+	func = f;
+
+	auto_selector.add_auto(*this);
 }
