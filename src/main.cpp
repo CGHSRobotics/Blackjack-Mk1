@@ -6,6 +6,8 @@
 #include "lvgl.hpp"
 
 
+okapi::Controller controller;
+
 ControllerDisplay controller_display;
 
 AutonomousSelector auto_selector;
@@ -90,7 +92,7 @@ void opcontrol() {
 
 	// test button motor with button A and test_motor
 	// should also work with motor groups (think intake)
-	ButtonMotor test(A, &test_motor);
+	ButtonMotor test(ControllerDigital::A, &test_motor);
 
 	while (true) {
 

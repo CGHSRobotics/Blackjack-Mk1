@@ -2,6 +2,7 @@
 
 #include "main.h"
 
+
 enum m_or_mg { motor_type, mgroup_type };
 
 /* ========================================================================== */
@@ -123,5 +124,63 @@ class ButtonMotor
 	}
 
 
-	~ButtonMotor();
+	~ButtonMotor() {};
+};
+
+
+/* ---------------------------- Pnuematics Button --------------------------- */
+// cheeky copy paste
+class ButtonPneumatics
+{
+	private:
+	okapi::ControllerDigital button;
+
+	pros::ADIDigitalOut* p;
+
+	bool toggle_enabled = false;
+
+	public:
+
+	/* ------------------------------ Contstructor ------------------------------ */
+	ButtonPneumatics(okapi::ControllerDigital b, pros::ADIDigitalOut* p) {
+		button = b;
+		p = p;
+	};
+
+
+	/* --------------------------------- Toggle --------------------------------- */
+	int toggle() {
+
+		if (controller[button].changedToPressed()) toggle_enabled = !toggle_enabled;
+
+		if (toggle_enabled)
+		{
+			p->set_value(true);
+		}
+		else
+		{
+			p->set_value(false);
+		}
+
+		return toggle_enabled;
+	}
+
+
+	/* ---------------------------------- Press --------------------------------- */
+	int press(int speed = 100, bool reverse = false) {
+
+		if (controller[button].isPressed())
+		{
+			p->set_value(true);
+		}
+		else
+		{
+			p->set_value(false);
+		}
+
+		return controller[button].isPressed();
+	}
+
+
+	~ButtonPneumatics() {};
 };

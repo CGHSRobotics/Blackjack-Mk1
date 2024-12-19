@@ -53,11 +53,9 @@
 	 // using namespace pros::literals;
 using namespace okapi;
 using namespace okapi::literals;
-using enum okapi::ControllerDigital;
-
 
 /* ------------------------------- Controller ------------------------------- */
-okapi::Controller controller;
+extern okapi::Controller controller;
 
 
 /**

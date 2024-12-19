@@ -1,4 +1,13 @@
 # Okapi-Pros v4 rewrite
 
 hello
-todo: fill this out
+todo: fill this 
+
+## generateMotionProfile.py
+
+A useful tool I found on the interwebs for generating waypoints for the okapi paths
+
+source: https://github.com/daman20/VRC-Scripts/blob/main/generateMotionProfile.py
+
+to use just run ``python generateMotionProfile.py``
+uses the "vex field.png" image in ./ (so update that if you want it to be high stakes accurate)
