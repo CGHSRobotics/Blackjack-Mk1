@@ -23,7 +23,7 @@ void initialize() {
 	controller_display.start_update_task();
 
 	// Lvgl test, lemme know if no worky
-	//lv_example_get_started_3();
+	lv_example_get_started_3();
 
 }
 
