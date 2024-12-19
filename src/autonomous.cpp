@@ -10,6 +10,43 @@
 AutonomousSelector auto_selector;
 
 
+
+
+
+AutoRoutine blue_positive("Blue Positive", [] {
+
+	chassis->moveDistance(24_in);
+	// lets you do other things
+	hookPneumatics.set_value(1);
+	// same thing as first but turning
+	chassis->turnAngle(90_deg);
+
+
+});
+
+
+AutoRoutine red_positive("Red Positive", [] {
+
+
+
+
+});
+
+
+AutoRoutine blue_negative("Blue Negative", [] {
+
+
+
+
+});
+
+
+AutoRoutine red_negative("Red Negative", [] {
+
+
+
+
+});
 /**
  *@brief Three side auto does whattt???
  *

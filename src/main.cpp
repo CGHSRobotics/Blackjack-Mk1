@@ -5,11 +5,9 @@
 #include "lvgl.hpp"
 #include "autonomous.hpp"
 
-
 okapi::Controller controller;
 
 ControllerDisplay controller_display;
-
 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
@@ -17,14 +15,14 @@ ControllerDisplay controller_display;
  * All other competition modes are blocked by initialize; it is recommended
  * to keep execution time for this mode under a few seconds.
  */
-void initialize() {
+void initialize()
+{
 
 	// Start Controller Display Task
 	controller_display.start_update_task();
 
 	// Lvgl test, lemme know if no worky
 	lv_example_get_started_3();
-
 }
 
 /**
@@ -32,7 +30,8 @@ void initialize() {
  * the VEX Competition Switch, following either autonomous or opcontrol. When
  * the robot is enabled, this task will exit.
  */
-void disabled() {
+void disabled()
+{
 	// nothing here
 }
 
@@ -45,7 +44,8 @@ void disabled() {
  * This task will exit when the robot is enabled and autonomous or opcontrol
  * starts.
  */
-void competition_initialize() {
+void competition_initialize()
+{
 	// Nothing here
 }
 
@@ -60,14 +60,14 @@ void competition_initialize() {
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {
-	auto_selector.set_selected("gen test");
+void autonomous()
+{
+	auto_selector.set_selected("Blue Positive");
 	auto_selector.run_selected();
 }
 
-
-void test() {
-
+void test()
+{
 }
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -82,28 +82,29 @@ void test() {
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
-void opcontrol() {
+void opcontrol()
+{
 
 	// test button motor with button A and test_motor
 	// should also work with motor groups (think intake)
 	ButtonMotor test(ControllerDigital::A, &test_motor);
 
-	//Activates chain and intake at same time
+	// Activates chain and intake at same time
 	ButtonMotor intakeAndChain(ControllerDigital::R1, &intake_and_chain_motors);
 
-	//Activates chain and intake at same time but reversed
+	// Activates chain and intake at same time but reversed
 	ButtonMotor intakeAndChainReverse(ControllerDigital::R2, &intake_and_chain_motors);
 
-	//Activates stake motor
+	// Activates stake motor
 	ButtonMotor stake(ControllerDigital::L1, &stake_motor);
 
-	//Activates stake motor but reversed 
+	// Activates stake motor but reversed
 	ButtonMotor stakeReverse(ControllerDigital::L2, &stake_motor);
 
 	ButtonPneumatics hook(ControllerDigital::B, &hookPneumatics);
 
-	while (true) {
-
+	while (true)
+	{
 
 		/* ========================================================================== */
 		/*                                  Controls                                  */
@@ -123,19 +124,17 @@ void opcontrol() {
 
 		hook.toggle();
 
-
 		/* ========================================================================== */
 		/*                                    Drive                                   */
 		/* ========================================================================== */
 		chassis->getModel()->tank(controller.getAnalog(okapi::ControllerAnalog::leftY),
-							controller.getAnalog(okapi::ControllerAnalog::rightY));
-
+								  controller.getAnalog(okapi::ControllerAnalog::rightY));
 
 		/* ========================================================================== */
 		/*                                   Screen                                   */
 		/* ========================================================================== */
 
-		//start controller display
+		// start controller display
 		controller_display.setLine(0, "Hello %s!", "Nick");
 
 		// display variables like so
@@ -148,8 +147,7 @@ void opcontrol() {
 		// Cheat Sheet available here:
 		// https://alvinalexander.com/programming/printf-format-cheat-sheet/
 
-
 		/* ---------------------------------- Delay --------------------------------- */
-		pros::delay(10);                               // Run for 10 ms then update
+		pros::delay(10); // Run for 10 ms then update
 	}
 }
