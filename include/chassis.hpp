@@ -14,6 +14,15 @@ extern okapi::Controller controller;
 
 #define LIFT_MOTOR_PORT 7
 
+#define INTAKE_MOTOR_PORT 8
+
+#define CHAIN_MOTOR_PORT 9
+
+#define STAKE_MOTOR_PORT 10
+
+#define HOOK_PNEU_PORT 'A'
+
+
 
 /* ========================================================================== */
 /*                             Chassis Controller                             */
@@ -30,3 +39,17 @@ extern std::shared_ptr<okapi::AsyncPositionController<double, double>> lift_cont
 
 
 extern okapi::Motor test_motor;
+
+extern okapi::MotorGroup intake_and_chain_motors;
+
+extern okapi::Motor stake_motor;
+
+
+
+/* ========================================================================== */
+/*                                    Pneumatics                              */
+/* ========================================================================== */
+
+
+extern pros::ADIDigitalOut hookPneumatics(HOOK_PNEU_PORT);
+

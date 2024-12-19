@@ -37,3 +37,13 @@ okapi::AsyncPosControllerBuilder()
 
 
 okapi::Motor test_motor(6, false, AbstractMotor::gearset::blue, okapi::AbstractMotor::encoderUnits::degrees);
+
+//Chain and intake motor defs
+okapi::MotorGroup intake_and_chain_motors({
+  okapi::Motor(INTAKE_MOTOR_PORT, false, AbstractMotor::gearset::blue, okapi::AbstractMotor::encoderUnits::degrees),
+  okapi::Motor(CHAIN_MOTOR_PORT, false, AbstractMotor::gearset::blue, okapi::AbstractMotor::encoderUnits::degrees)
+});
+
+//Wall stake motor def 
+okapi::Motor stake_motor(STAKE_MOTOR_PORT, false, AbstractMotor::gearset::blue, okapi::AbstractMotor::encoderUnits::degrees);
+
