@@ -50,6 +50,5 @@ extern okapi::Motor stake_motor;
 /*                                    Pneumatics                              */
 /* ========================================================================== */
 
-
-extern pros::ADIDigitalOut hookPneumatics(HOOK_PNEU_PORT);
+extern pros::ADIDigitalOut hookPneumatics;
 

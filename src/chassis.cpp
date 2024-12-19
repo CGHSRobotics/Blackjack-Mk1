@@ -47,3 +47,4 @@ okapi::MotorGroup intake_and_chain_motors({
 //Wall stake motor def 
 okapi::Motor stake_motor(STAKE_MOTOR_PORT, false, AbstractMotor::gearset::blue, okapi::AbstractMotor::encoderUnits::degrees);
 
+pros::ADIDigitalOut hookPneumatics(HOOK_PNEU_PORT);

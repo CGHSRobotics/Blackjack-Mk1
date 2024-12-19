@@ -84,10 +84,6 @@ void test() {
  */
 void opcontrol() {
 
-	autonomous();
-	return;
-
-
 	// test button motor with button A and test_motor
 	// should also work with motor groups (think intake)
 	ButtonMotor test(ControllerDigital::A, &test_motor);
@@ -120,7 +116,7 @@ void opcontrol() {
 		intakeAndChain.toggle(80, false);
 
 		intakeAndChainReverse.toggle(80, true);
-		
+
 		stake.toggle(80, false);
 
 		stakeReverse.toggle(80, true);
