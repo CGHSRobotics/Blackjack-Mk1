@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Lydiaisgay",
+    "project_name": "blackjack-mk1",
     "target": "v5",
     "templates": {
       "kernel": {
@@ -397,7 +397,7 @@
       }
     },
     "upload_options": {
-      "description": "caleb says hi",
+      "description": "merry christmas",
       "icon": "pros"
     },
     "use_early_access": false
