@@ -142,9 +142,9 @@ class ButtonPneumatics
 	public:
 
 	/* ------------------------------ Contstructor ------------------------------ */
-	ButtonPneumatics(okapi::ControllerDigital b, pros::ADIDigitalOut* p) {
+	ButtonPneumatics(okapi::ControllerDigital b, pros::ADIDigitalOut* pi) {
 		button = b;
-		p = p;
+		p = pi;
 	};
 
 
