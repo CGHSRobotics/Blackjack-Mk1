@@ -94,6 +94,20 @@ void opcontrol() {
 	// should also work with motor groups (think intake)
 	ButtonMotor test(ControllerDigital::A, &test_motor);
 
+	//Activates chain and intake at same time
+	ButtonMotor intakeAndChain(ControllerDigital::R1, &intake_and_chain_motors);
+
+	//Activates chain and intake at same time but reversed
+	ButtonMotor intakeAndChainReverse(ControllerDigital::R2, &intake_and_chain_motors);
+
+	//Activates stake motor
+	ButtonMotor stake(ControllerDigital::L1, &stake_motor);
+
+	//Activates stake motor but reversed 
+	ButtonMotor stakeReverse(ControllerDigital::L2, &stake_motor);
+
+	ButtonPneumatics hook(ControllerDigital::B, &hookPneumatics);
+
 	while (true) {
 
 
@@ -105,7 +119,15 @@ void opcontrol() {
 		// 60% speed, reversed
 		test.toggle(60, true);
 
+		intakeAndChain.toggle(80, false);
 
+		intakeAndChainReverse.toggle(80, true);
+		
+		stake.toggle(80, false);
+
+		stakeReverse.toggle(80, true);
+
+		hook.toggle();
 
 
 		/* ========================================================================== */
