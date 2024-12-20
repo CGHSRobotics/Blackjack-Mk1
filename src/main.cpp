@@ -9,6 +9,7 @@ okapi::Controller controller;
 
 ControllerDisplay controller_display;
 
+bool both_enabled = false; 
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -82,8 +83,25 @@ void test()
  * operator control task will be stopped. Re-enabling the robot will restart the
  * task, not resume it from where it left off.
  */
+
+void both(bool enabled) {
+  if (enabled) {
+    intake_and_chain_motors.moveVelocity(-600);
+   
+  }
+
+  else {
+    intake_and_chain_motors.moveVelocity(0);
+	
+  }
+}
+
+
 void opcontrol()
 {
+
+
+
 	//ALL BROKEN DO NOT ENABLE 
 	// test button motor with button A and test_motor
 	// should also work with motor groups (think intake)
@@ -102,11 +120,19 @@ void opcontrol()
 	// Activates stake motor but reversed
 	//ButtonMotor stakeReverse(ControllerDigital::L2, &stake_motor);
 
-	//ButtonPneumatics hook(ControllerDigital::B, &hookPneumatics);
+	ButtonPneumatics hook(ControllerDigital::B, &hookPneumatics);
 
 	while (true)
 	{
+		if (controller[ControllerDigital::R1].isPressed()){
+		both_enabled = true;
 
+		} else {
+
+			both_enabled = false;
+		}
+
+		both(both_enabled);
 		/* ========================================================================== */
 		/*                                  Controls                                  */
 		/* ========================================================================== */
@@ -124,9 +150,9 @@ void opcontrol()
 		stake.toggle(80, false);
 
 		stakeReverse.toggle(80, true);
-
+	*/
 		hook.toggle();
-		*/
+		
 		/* ========================================================================== */
 		/*                                    Drive                                   */
 		/* ========================================================================== */
