@@ -10,6 +10,12 @@ okapi::Controller controller;
 ControllerDisplay controller_display;
 
 bool both_enabled = false; 
+
+int both_speed = -600;
+
+bool stake_enabled = false;
+
+int stake_speed = -300;
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -86,7 +92,7 @@ void test()
 
 void both(bool enabled) {
   if (enabled) {
-    intake_and_chain_motors.moveVelocity(-600);
+    intake_and_chain_motors.moveVelocity(both_speed);
    
   }
 
@@ -96,6 +102,25 @@ void both(bool enabled) {
   }
 }
 
+void stake(bool enabled) {
+	if (enabled) {
+		stake_motor.moveVelocity(stake_speed);
+	}
+
+	else {
+		stake_motor.moveVelocity(0);
+	}
+}
+
+void both_reverse() {
+	both_speed = -both_speed;
+
+}
+
+void stake_reverse() {
+	stake_speed = -stake_speed;
+
+}
 
 void opcontrol()
 {
@@ -133,6 +158,24 @@ void opcontrol()
 		}
 
 		both(both_enabled);
+
+		if (controller[ControllerDigital::X].changedToPressed()){
+			both_reverse();
+		}
+
+		if (controller[ControllerDigital::L1].isPressed()){
+		stake_enabled = true;
+
+		} else {
+
+			stake_enabled = false;
+		}
+
+		stake(stake_enabled);
+
+		if (controller[ControllerDigital::Y].changedToPressed()){
+			stake_reverse();
+		}
 		/* ========================================================================== */
 		/*                                  Controls                                  */
 		/* ========================================================================== */
