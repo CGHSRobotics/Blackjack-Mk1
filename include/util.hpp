@@ -59,6 +59,28 @@ class ButtonMotor
 					break;
 			}
 		}
+		else {
+			switch (mg->getGearing())
+			{
+				case okapi::AbstractMotor::gearset::blue:
+					return 6;
+					break;
+
+				case okapi::AbstractMotor::gearset::green:
+					return 2;
+					break;
+
+
+				case okapi::AbstractMotor::gearset::red:
+					return 1;
+					break;
+
+
+				default:
+					break;
+			}
+		}
+
 	}
 
 
