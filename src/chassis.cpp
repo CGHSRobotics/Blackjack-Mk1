@@ -5,7 +5,7 @@
 /* --------------------------------- Chassis -------------------------------- */
 std::shared_ptr <okapi::ChassisController> chassis =
 okapi::ChassisControllerBuilder()
-.withMotors(okapi::MotorGroup({ CHASSIS_L_1, CHASSIS_L_2, CHASSIS_L_3 }), okapi::MotorGroup({ CHASSIS_R_1, CHASSIS_R_2, CHASSIS_R_3 }))
+.withMotors(okapi::MotorGroup({ -CHASSIS_L_1, CHASSIS_L_2, -CHASSIS_L_3 }), okapi::MotorGroup({ -CHASSIS_R_1, CHASSIS_R_2, -CHASSIS_R_3 }))
 .withDimensions(okapi::AbstractMotor::gearset::blue, { {2.75_in, 9.5_in}, okapi::imev5BlueTPR })
 .withOdometry()
 .build();
@@ -45,6 +45,6 @@ okapi::MotorGroup intake_and_chain_motors({
 });
 
 //Wall stake motor def 
-okapi::Motor stake_motor(STAKE_MOTOR_PORT, false, AbstractMotor::gearset::blue, okapi::AbstractMotor::encoderUnits::degrees);
+okapi::Motor stake_motor(STAKE_MOTOR_PORT, false, AbstractMotor::gearset::green, okapi::AbstractMotor::encoderUnits::degrees);
 
 pros::ADIDigitalOut hookPneumatics(HOOK_PNEU_PORT);

@@ -2,19 +2,17 @@
 
 #include "chassis.hpp"
 
-
 /* ========================================================================== */
 /*                                   Classes                                  */
 /* ========================================================================== */
 
 class AutoRoutine
 {
-	private:
-	void (*func) ();
+private:
+	void (*func)();
 	std::string name;
 
-	public:
-
+public:
 	AutoRoutine(std::string str, void (*f)());
 
 	std::string get_name() { return name; }
@@ -24,17 +22,14 @@ class AutoRoutine
 	~AutoRoutine() {}
 };
 
-
 class AutonomousSelector
 {
-	private:
-
+private:
 	std::vector<AutoRoutine> auto_arr;
 
 	int selected_index = 0;
 
-	public:
-
+public:
 	AutonomousSelector();
 
 	void add_auto(AutoRoutine ar);
@@ -51,18 +46,23 @@ class AutonomousSelector
 
 	int get_num_autons();
 
-	~AutonomousSelector() {
-
+	~AutonomousSelector()
+	{
 	}
-
 };
 
 extern AutonomousSelector auto_selector;
-
-
 
 /* ========================================================================== */
 /*                                  Routines                                  */
 /* ========================================================================== */
 
 extern AutoRoutine three_side;
+
+extern AutoRoutine blue_positive;
+
+extern AutoRoutine blue_negative;
+
+extern AutoRoutine red_positive;
+
+extern AutoRoutine red_negative;
