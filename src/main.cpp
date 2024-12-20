@@ -147,6 +147,8 @@ void opcontrol()
 
 	ButtonPneumatics hook(ControllerDigital::B, &hookPneumatics);
 
+	ButtonPneumatics flap(ControllerDigital::A, &flapPneumatics);
+
 	while (true)
 	{
 		if (controller[ControllerDigital::R1].isPressed()){
@@ -195,6 +197,8 @@ void opcontrol()
 		stakeReverse.toggle(80, true);
 	*/
 		hook.toggle();
+
+		flap.toggle();
 		
 		/* ========================================================================== */
 		/*                                    Drive                                   */

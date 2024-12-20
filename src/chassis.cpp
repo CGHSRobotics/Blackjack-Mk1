@@ -48,3 +48,6 @@ okapi::MotorGroup intake_and_chain_motors({
 okapi::Motor stake_motor(STAKE_MOTOR_PORT, false, AbstractMotor::gearset::green, okapi::AbstractMotor::encoderUnits::degrees);
 
 pros::ADIDigitalOut hookPneumatics(HOOK_PNEU_PORT);
+
+
+pros::ADIDigitalOut flapPneumatics(FLAP_PNEU_PORT);

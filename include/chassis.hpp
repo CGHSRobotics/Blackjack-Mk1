@@ -22,6 +22,8 @@ extern okapi::Controller controller;
 
 #define HOOK_PNEU_PORT 'A'
 
+#define FLAP_PNEU_PORT 'B'
+
 /* ========================================================================== */
 /*                             Chassis Controller                             */
 /* ========================================================================== */
@@ -45,3 +47,5 @@ extern okapi::Motor stake_motor;
 /* ========================================================================== */
 
 extern pros::ADIDigitalOut hookPneumatics;
+
+extern pros::ADIDigitalOut flapPneumatics;
