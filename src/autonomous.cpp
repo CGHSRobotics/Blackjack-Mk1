@@ -15,17 +15,31 @@ AutonomousSelector auto_selector;
 
 AutoRoutine blue_positive("Blue Positive", [] {
 
-	chassis->moveDistance(24_in);
+	chassis->setMaxVelocity(200);
+
+	chassis->moveDistance(-37_in);
 	// lets you do other things
+	pros::delay(500);
 	hookPneumatics.set_value(1);
 	// same thing as first but turning
-	chassis->turnAngle(90_deg);
+
+	chassis->setMaxVelocity(400);
 
 
+	chassis->turnAngle(210_deg);
+
+	chassis->moveDistance(25_in);
+
+	//chassis->waitUntilSettled();
+
+	//intake_and_chain_motors.moveVelocity(600);
+
+	
 });
 
 
 AutoRoutine red_positive("Red Positive", [] {
+
 
 
 
