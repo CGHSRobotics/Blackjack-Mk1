@@ -14,9 +14,11 @@ extern okapi::Controller controller;
 
 #define LIFT_MOTOR_PORT 7
 
-#define INTAKE_MOTOR_PORT 7
+#define INTAKE_MOTOR_PORT 10
 
 #define CHAIN_MOTOR_PORT 8
+
+#define ROTATIONAL_SENSOR 20
 
 #define STAKE_MOTOR_PORT 9
 

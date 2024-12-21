@@ -21,18 +21,25 @@ AutoRoutine blue_positive("Blue Positive", [] {
 	// lets you do other things
 	pros::delay(500);
 	hookPneumatics.set_value(1);
+
+	intake_and_chain_motors.moveVelocity(600);
 	// same thing as first but turning
 
 	chassis->setMaxVelocity(400);
 
+	chassis->turnAngle(220_deg);
 
-	chassis->turnAngle(210_deg);
 
 	chassis->moveDistance(25_in);
 
+	chassis->turnAngle(-90_deg);
+
+	chassis->moveDistance(12_in);
+
+
 	//chassis->waitUntilSettled();
 
-	//intake_and_chain_motors.moveVelocity(600);
+	
 
 	
 });
