@@ -69,8 +69,11 @@ void competition_initialize()
  */
 void autonomous()
 {
-	auto_selector.set_selected("Blue Positive");
+	
+	auto_selector.set_selected("skills");
 	auto_selector.run_selected();
+	
+
 }
 
 void test()
@@ -147,7 +150,7 @@ void opcontrol()
 
 	ButtonPneumatics hook(ControllerDigital::B, &hookPneumatics);
 
-	ButtonPneumatics flap(ControllerDigital::A, &flapPneumatics);
+	ButtonPneumatics flap(ControllerDigital::R2, &flapPneumatics);
 
 	while (true)
 	{

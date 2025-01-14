@@ -12,9 +12,9 @@ extern okapi::Controller controller;
 #define CHASSIS_R_2 -3
 #define CHASSIS_R_3 -2
 
-#define LIFT_MOTOR_PORT 7
+#define LIFT_MOTOR_PORT 10
 
-#define INTAKE_MOTOR_PORT 10
+#define INTAKE_MOTOR_PORT 7
 
 #define CHAIN_MOTOR_PORT 8
 

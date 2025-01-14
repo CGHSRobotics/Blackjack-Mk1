@@ -66,3 +66,5 @@ extern AutoRoutine blue_negative;
 extern AutoRoutine red_positive;
 
 extern AutoRoutine red_negative;
+
+extern AutoRoutine skills;

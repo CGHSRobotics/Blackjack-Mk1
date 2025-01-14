@@ -47,9 +47,15 @@ AutoRoutine blue_positive("Blue Positive", [] {
 
 AutoRoutine red_positive("Red Positive", [] {
 
+chassis->setMaxVelocity(400);
 
+chassis->turnAngle(90_deg);
 
+chassis->moveDistance(24_in);																																																																																																																																																																													
 
+hookPneumatics.set_value(1);
+
+chassis->turnAngle(90_deg);
 
 });
 
@@ -72,6 +78,42 @@ AutoRoutine red_negative("Red Negative", [] {
  *@brief Three side auto does whattt???
  *
  */
+
+AutoRoutine skills("skills", [] {
+
+
+	chassis->setMaxVelocity(100);
+
+	chassis->moveDistance(-12_in);
+	// lets you do other things
+	pros::delay(400);
+
+	hookPneumatics.set_value(1);
+
+	pros::delay(400);
+
+	chassis->turnAngle(-250_deg);
+
+	chassis->setMaxVelocity(300);
+	
+	intake_and_chain_motors.moveVelocity(-600);
+
+	chassis->moveDistance(40_in);
+
+	chassis->turnAngle(140_deg);
+
+	chassis->moveDistance(45_in);
+//55pros mu
+
+	chassis->turnAngle(160_deg);
+
+	chassis->moveDistance(45_in);
+
+	chassis->turnAngle(180_deg);
+
+	chassis->moveDistance(-12_in);
+
+});
 AutoRoutine three_side("Three Side", [] {
 
 	// waits until chassis is done
