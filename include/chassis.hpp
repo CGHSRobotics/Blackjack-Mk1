@@ -14,15 +14,15 @@ extern okapi::Controller controller;
 
 
 
-#define CHASSIS_R_1 -15
-#define CHASSIS_R_2 -11
+#define CHASSIS_R_1 15
+#define CHASSIS_R_2 11
 
 
 #define LIFT_MOTOR_PORT 10
 
-#define INTAKE_MOTOR_PORT 7
+#define INTAKE_MOTOR_PORT 13
 
-#define CHAIN_MOTOR_PORT 8
+#define CHAIN_MOTOR_PORT -16
 
 #define ROTATIONAL_SENSOR 20
 
