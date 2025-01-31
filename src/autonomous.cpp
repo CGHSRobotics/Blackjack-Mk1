@@ -15,30 +15,7 @@ AutonomousSelector auto_selector;
 
 AutoRoutine blue_positive("Blue Positive", [] {
 
-	chassis->setMaxVelocity(200);
-
-	chassis->moveDistance(-37_in);
-	// lets you do other things
-	pros::delay(500);
-	hookPneumatics.set_value(1);
-
-	intake_and_chain_motors.moveVelocity(600);
-	// same thing as first but turning
-
-	chassis->setMaxVelocity(400);
-
-	chassis->turnAngle(220_deg);
-
-
-	chassis->moveDistance(25_in);
-
-	chassis->turnAngle(-90_deg);
-
-	chassis->moveDistance(12_in);
-
-
-	//chassis->waitUntilSettled();
-
+	
 	
 
 	
@@ -46,16 +23,28 @@ AutoRoutine blue_positive("Blue Positive", [] {
 
 
 AutoRoutine red_positive("Red Positive", [] {
+	chassis->setMaxVelocity(100);
 
-chassis->setMaxVelocity(400);
+	chassis->moveDistance(-42_in);
+	// lets you do other things
+	pros::delay(400);
 
-chassis->turnAngle(90_deg);
+	hookPneumatics.set_value(1);
 
-chassis->moveDistance(24_in);																																																																																																																																																																													
+	intake_and_chain_motors.moveVelocity(-600);
 
-hookPneumatics.set_value(1);
+	pros::delay(400);
 
-chassis->turnAngle(90_deg);
+	chassis->turnAngle(-160_deg);
+
+	chassis->setMaxVelocity(300);
+	
+
+	chassis->moveDistance(30_in);
+
+	chassis->turnAngle(-200_deg);
+
+	chassis->moveDistance(46_in);
 
 });
 
@@ -69,7 +58,28 @@ AutoRoutine blue_negative("Blue Negative", [] {
 
 
 AutoRoutine red_negative("Red Negative", [] {
+	chassis->setMaxVelocity(100);
 
+	chassis->moveDistance(-42_in);
+	// lets you do other things
+	pros::delay(400);
+
+	hookPneumatics.set_value(1);
+
+	intake_and_chain_motors.moveVelocity(-600);
+
+	pros::delay(400);
+
+	chassis->turnAngle(160_deg);
+
+	chassis->setMaxVelocity(300);
+	
+
+	chassis->moveDistance(30_in);
+
+	chassis->turnAngle(200_deg);
+
+	chassis->moveDistance(40_in);
 
 
 
@@ -92,33 +102,55 @@ AutoRoutine skills("skills", [] {
 
 	pros::delay(400);
 
-	chassis->turnAngle(-250_deg);
+	//first turn to line up 
+	chassis->turnAngle(-235_deg);
 
 	chassis->setMaxVelocity(300);
 	
 	intake_and_chain_motors.moveVelocity(-600);
 
 	chassis->moveDistance(40_in);
-
-	chassis->turnAngle(140_deg);
-
-	chassis->moveDistance(45_in);
-//55pros mu
-
-	chassis->turnAngle(160_deg);
-
-	chassis->moveDistance(45_in);
-
+	//Second turn to line up with second 
 	chassis->turnAngle(180_deg);
 
-	chassis->moveDistance(-12_in);
+	chassis->moveDistance(35_in);
 
+	//third turn 
+	chassis->turnAngle(150_deg);
+//140
+	chassis->moveDistance(25_in);
+	//fourth turn 
+	//chassis->turnAngle(235_deg);
+	//This turn was breaking it!
+	//chassis->moveDistance(-5_in);
+
+
+	chassis->waitUntilSettled();
+
+	chassis->moveDistance(-20_in);
+
+	chassis->moveDistance(10_in);
+
+	chassis->turnAngle(90_deg);
+
+	chassis->moveDistance(-30_in);
+
+	hookPneumatics.set_value(0);
+
+
+	//first quat scored 
+
+	//test after
+	/*
+	chassis->turnAngle(100_deg);
+
+	chassis->moveDistance(15_in);
+	*/
 });
 AutoRoutine three_side("Three Side", [] {
 
 	// waits until chassis is done
 	chassis->moveDistance(10_in);
-
 	// lets you do other things
 	chassis->moveDistanceAsync(10_in);
 	// do other things
