@@ -70,7 +70,7 @@ void competition_initialize()
 void autonomous()
 {
 	
-	auto_selector.set_selected("skills");
+	auto_selector.set_selected("");
 	auto_selector.run_selected();
 	
 
