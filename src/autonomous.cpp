@@ -44,7 +44,9 @@ AutoRoutine red_positive("Red Positive", [] {
 
 	chassis->turnAngle(-200_deg);
 
-	chassis->moveDistance(46_in);
+	chassis->moveDistance(23_in);
+
+	chassis->moveDistance(23_in);
 
 });
 

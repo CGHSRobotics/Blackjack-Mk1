@@ -9,7 +9,7 @@ okapi::Controller controller;
 
 ControllerDisplay controller_display;
 
-bool both_enabled = false; 
+bool both_enabled = false;
 
 int both_speed = -600;
 
@@ -69,11 +69,9 @@ void competition_initialize()
  */
 void autonomous()
 {
-	
-	auto_selector.set_selected("skills");
-	auto_selector.run_selected();
-	
 
+	auto_selector.set_selected("Red Positive");
+	auto_selector.run_selected();
 }
 
 void test()
@@ -93,60 +91,62 @@ void test()
  * task, not resume it from where it left off.
  */
 
-void both(bool enabled) {
-  if (enabled) {
-    intake_and_chain_motors.moveVelocity(both_speed);
-   
-  }
+void both(bool enabled)
+{
+	if (enabled)
+	{
+		intake_and_chain_motors.moveVelocity(both_speed);
+	}
 
-  else {
-    intake_and_chain_motors.moveVelocity(0);
-	
-  }
+	else
+	{
+		intake_and_chain_motors.moveVelocity(0);
+	}
 }
 
-void stake(bool enabled) {
-	if (enabled) {
+void stake(bool enabled)
+{
+	if (enabled)
+	{
 		stake_motor.moveVelocity(stake_speed);
 	}
 
-	else {
+	else
+	{
 		stake_motor.moveVelocity(0);
 	}
 }
 
-void both_reverse() {
+void both_reverse()
+{
 	both_speed = -both_speed;
-
 }
 
-void stake_reverse() {
+void stake_reverse()
+{
 	stake_speed = -stake_speed;
-
 }
 
 void opcontrol()
 {
 
+	// ALL BROKEN DO NOT ENABLE
+	//  test button motor with button A and test_motor
+	//  should also work with motor groups (think intake)
 
-
-	//ALL BROKEN DO NOT ENABLE 
-	// test button motor with button A and test_motor
-	// should also work with motor groups (think intake)
-
-	//ButtonMotor test(ControllerDigital::A, &test_motor);
+	// ButtonMotor test(ControllerDigital::A, &test_motor);
 
 	// Activates chain and intake at same time
-	//ButtonMotor intakeAndChain(ControllerDigital::R1, &intake_and_chain_motors);
+	// ButtonMotor intakeAndChain(ControllerDigital::R1, &intake_and_chain_motors);
 
 	// Activates chain and intake at same time but reversed
-	//ButtonMotor intakeAndChainReverse(ControllerDigital::R2, &intake_and_chain_motors);
+	// ButtonMotor intakeAndChainReverse(ControllerDigital::R2, &intake_and_chain_motors);
 
 	// Activates stake motor
-	//ButtonMotor stake(ControllerDigital::L1, &stake_motor);
+	// ButtonMotor stake(ControllerDigital::L1, &stake_motor);
 
 	// Activates stake motor but reversed
-	//ButtonMotor stakeReverse(ControllerDigital::L2, &stake_motor);
+	// ButtonMotor stakeReverse(ControllerDigital::L2, &stake_motor);
 
 	ButtonPneumatics hook(ControllerDigital::B, &hookPneumatics);
 
@@ -154,31 +154,37 @@ void opcontrol()
 
 	while (true)
 	{
-		if (controller[ControllerDigital::R1].isPressed()){
-		both_enabled = true;
-
-		} else {
+		if (controller[ControllerDigital::R1].isPressed())
+		{
+			both_enabled = true;
+		}
+		else
+		{
 
 			both_enabled = false;
 		}
 
 		both(both_enabled);
 
-		if (controller[ControllerDigital::X].changedToPressed()){
+		if (controller[ControllerDigital::X].changedToPressed())
+		{
 			both_reverse();
 		}
 
-		if (controller[ControllerDigital::L1].isPressed()){
-		stake_enabled = true;
-
-		} else {
+		if (controller[ControllerDigital::L1].isPressed())
+		{
+			stake_enabled = true;
+		}
+		else
+		{
 
 			stake_enabled = false;
 		}
 
 		stake(stake_enabled);
 
-		if (controller[ControllerDigital::Y].changedToPressed()){
+		if (controller[ControllerDigital::Y].changedToPressed())
+		{
 			stake_reverse();
 		}
 		/* ========================================================================== */
@@ -187,7 +193,7 @@ void opcontrol()
 
 		// use test motor like a toggle on button a
 		// 60% speed, reversed
-		//BROKEN DO NOT ENABLE
+		// BROKEN DO NOT ENABLE
 		/*
 		test.toggle(60, true);
 
@@ -202,7 +208,7 @@ void opcontrol()
 		hook.toggle();
 
 		flap.toggle();
-		
+
 		/* ========================================================================== */
 		/*                                    Drive                                   */
 		/* ========================================================================== */
