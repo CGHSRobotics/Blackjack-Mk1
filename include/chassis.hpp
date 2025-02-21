@@ -5,28 +5,29 @@
 
 extern okapi::Controller controller;
 
-#define CHASSIS_L_1 -14
-#define CHASSIS_L_2 -17
+#define CHASSIS_L_1 -11
+#define CHASSIS_L_2 -4
 
 
 
-#define CHASSIS_L_3 1
+#define CHASSIS_L_3 -7
 
 
 
-#define CHASSIS_R_1 15
-#define CHASSIS_R_2 11
+#define CHASSIS_R_1 10
+#define CHASSIS_R_2 19
+#define CHASSIS_R_3 8
 
 
 #define LIFT_MOTOR_PORT 10
 
-#define INTAKE_MOTOR_PORT 13
+#define INTAKE_MOTOR_PORT -1
 
-#define CHAIN_MOTOR_PORT -16
+#define CHAIN_MOTOR_PORT 2
 
 #define ROTATIONAL_SENSOR 20
 
-#define STAKE_MOTOR_PORT 9
+#define STAKE_MOTOR_PORT 3
 
 #define HOOK_PNEU_PORT 'A'
 
