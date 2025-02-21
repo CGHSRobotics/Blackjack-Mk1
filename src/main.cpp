@@ -30,6 +30,8 @@ void initialize()
 
 	// Lvgl test, lemme know if no worky
 	lv_example_get_started_3();
+
+	
 }
 
 /**
@@ -69,9 +71,48 @@ void competition_initialize()
  */
 void autonomous()
 {
-
-	auto_selector.set_selected("Red Positive");
+	
+	/*
+	auto_selector.set_selected("skills");
 	auto_selector.run_selected();
+	*/
+
+	//super good bar 
+	/*
+	chassis->setMaxVelocity(300);
+
+	stake_motor.moveVelocity(-300);
+
+	pros::delay(5000);
+
+	chassis->moveDistance(-42_in);
+	*/
+	
+	//red positive NO TOUCHY 
+	/*
+	chassis->setMaxVelocity(300);
+
+	chassis->moveDistance(-42_in);
+	
+
+	pros::delay(1000);
+
+	
+
+	hookPneumatics.set_value(1);
+
+	intake_and_chain_motors.moveVelocity(-600);
+
+	pros::delay(1000);
+
+	chassis->turnAngle(445_deg);
+
+	chassis->moveDistance(30_in);
+
+	chassis->turnAngle(280_deg);
+
+	chassis->moveDistance(-40_in);
+	*/
 }
 
 void test()

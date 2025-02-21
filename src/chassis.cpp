@@ -12,6 +12,7 @@ okapi::ChassisControllerBuilder()
 
 
 
+
 std::shared_ptr<okapi::AsyncMotionProfileController> auton_chassis_contr =
 okapi::AsyncMotionProfileControllerBuilder()
 .withLimits({
@@ -31,7 +32,7 @@ const double liftkD = 0.0001;
 
 std::shared_ptr<okapi::AsyncPositionController<double, double>> lift_contr =
 okapi::AsyncPosControllerBuilder()
-.withMotor(LIFT_MOTOR_PORT) // lift motor port 3
+.withMotor(LIFT_MOTOR_PORT) // lift motor port i
 .withGains({ liftkP, liftkI, liftkD })
 .build();
 
