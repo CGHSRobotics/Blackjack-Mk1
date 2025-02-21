@@ -5,18 +5,18 @@
 
 extern okapi::Controller controller;
 
-#define CHASSIS_L_1 -11
-#define CHASSIS_L_2 -4
+#define CHASSIS_L_1 -10
+#define CHASSIS_L_2 -19
 
 
 
-#define CHASSIS_L_3 -7
+#define CHASSIS_L_3 -8
 
 
 
-#define CHASSIS_R_1 10
-#define CHASSIS_R_2 19
-#define CHASSIS_R_3 8
+#define CHASSIS_R_1 11
+#define CHASSIS_R_2 4
+#define CHASSIS_R_3 7
 
 
 #define LIFT_MOTOR_PORT 10
