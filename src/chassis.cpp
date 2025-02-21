@@ -6,7 +6,7 @@
 std::shared_ptr <okapi::ChassisController> chassis =
 okapi::ChassisControllerBuilder()
 .withMotors(okapi::MotorGroup({ -CHASSIS_L_1, CHASSIS_L_2}), okapi::MotorGroup({ -CHASSIS_R_1, CHASSIS_R_2}))
-.withDimensions(okapi::AbstractMotor::gearset::blue, { {4_in,11.5_in}, okapi::imev5BlueTPR })
+.withDimensions(okapi::AbstractMotor::gearset::blue, { {2.75_in, 9.5_in}, okapi::imev5BlueTPR })
 .withOdometry()
 .build();
 
