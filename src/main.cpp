@@ -85,7 +85,7 @@ void autonomous()
 
 	chassis->moveDistance(30_in);
 	
-	chassis->turnAngle(445_deg);
+	chassis->turnAngle(200_deg);
 
 	/*
 	auto_selector.set_selected("skills");

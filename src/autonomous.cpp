@@ -60,7 +60,7 @@ AutoRoutine blue_negative("Blue Negative", [] {
 
 
 AutoRoutine red_negative("Red Negative", [] {
-	chassis->setMaxVelocity(100);
+	chassis->setMaxVelocity(300);
 
 	chassis->moveDistance(-42_in);
 	// lets you do other things
