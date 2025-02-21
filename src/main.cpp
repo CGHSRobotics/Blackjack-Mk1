@@ -71,7 +71,22 @@ void competition_initialize()
  */
 void autonomous()
 {
+	chassis->setMaxVelocity(200);
+
+	chassis->moveDistance(-17_in);
+
+	hookPneumatics.set_value(1);
+
+	intake_and_chain_motors.moveVelocity(-600);
+
+	pros::delay(1000);
+
+	chassis->turnAngle(305_deg);
+
+	chassis->moveDistance(30_in);
 	
+	chassis->turnAngle(445_deg);
+
 	/*
 	auto_selector.set_selected("skills");
 	auto_selector.run_selected();
